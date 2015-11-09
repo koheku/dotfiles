@@ -3,6 +3,13 @@ set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 
+# Resurrect processes
+set -g default-command "reattach-to-user-namespace -l $SHELL"
+set -g @resurrect-processes 'vim mvim "git log" "~MacVim.app"'
+
+# Vim session
+set -g @resurrect-strategy-vim 'session'
+
 # Mouse scrolling
 set -g mode-mouse on
 set -g mouse-resize-pane on

@@ -8,6 +8,7 @@ set -g default-command "reattach-to-user-namespace -l $SHELL"
 set -g @resurrect-processes 'vim mvim "git log" "~MacVim.app"'
 
 # Vim session
+# This doesn't actually work yet, because I'm using xolox/vim-session instead of tpope/vim-obsession
 set -g @resurrect-strategy-vim 'session'
 
 # Mouse scrolling
@@ -15,6 +16,16 @@ set -g mode-mouse on
 set -g mouse-resize-pane on
 set -g mouse-select-pane on
 set -g mouse-select-window on
+
+# The following lines were copy-pasted from http://evertpot.com/osx-tmux-vim-copy-paste-clipboard/
+# Setup 'v' to begin selection as in Vim
+bind-key -t vi-copy v begin-selection
+bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
+# Update default binding of `Enter` to also use copy-pipe
+unbind -t vi-copy Enter
+bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
+# Bind ']' to use pbpaste
+bind ] run "reattach-to-user-namespace pbpaste | tmux load-buffer - && tmux paste-buffer"
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'

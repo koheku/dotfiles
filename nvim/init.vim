@@ -11,10 +11,16 @@ set expandtab
 set clipboard=unnamed
 
 " Plugins with vim-plug
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/.yadr/nvim/plugged')
+"Appearance
+Plug 'itchyny/lightline.vim'
+Plug 'skwp/vim-colors-solarized'
+Plug 'chrisbra/Colorizer'
+"Navigation
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'easymotion/vim-easymotion.vim'
 Plug 'christoomey/vim-tmux-navigator'
-" Group dependencies, vim-session depends on vim-misc
+" Vim-session depends on vim-misc
 Plug 'xolox/vim-misc' | Plug 'xolox/vim-session'
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }

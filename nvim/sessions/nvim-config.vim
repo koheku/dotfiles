@@ -1,30 +1,30 @@
-" ~/.config/nvim/sessions/nvim-config.vim:
+" ~/.yadr/nvim/sessions/nvim-config.vim:
 " Vim session script.
-" Created by session.vim 2.13.1 on 13 November 2015 at 17:12:10.
+" Created by session.vim 2.13.1 on 13 November 2015 at 18:03:03.
 " Open this file in Vim and run :source % to restore your session.
 
 if exists('g:syntax_on') != 1 | syntax on | endif
 if exists('g:did_load_filetypes') != 1 | filetype on | endif
 if exists('g:did_load_ftplugin') != 1 | filetype plugin on | endif
 if exists('g:did_indent_on') != 1 | filetype indent on | endif
-if &background != 'light'
-	set background=light
+if &background != 'dark'
+	set background=dark
 endif
+if !exists('g:colors_name') || g:colors_name != 'solarized' | colorscheme solarized | endif
 call setqflist([])
 let SessionLoad = 1
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd ~/.config/nvim
+cd ~/.yadr/nvim
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +1 init.vim
-badd +4 settings/vim-session.vim
+badd +1 screen-256color.ti
+badd +0 init.vim
 argglobal
 silent! argdel *
-argadd init.vim
 edit init.vim
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -35,8 +35,8 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 35 + 102) / 204)
-exe 'vert 2resize ' . ((&columns * 168 + 102) / 204)
+exe 'vert 1resize ' . ((&columns * 30 + 102) / 204)
+exe 'vert 2resize ' . ((&columns * 173 + 102) / 204)
 argglobal
 enew
 " file NERD_tree_1
@@ -59,15 +59,16 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 16 - ((14 * winheight(0) + 21) / 42)
+let s:l = 13 - ((12 * winheight(0) + 16) / 32)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-16
+13
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 35 + 102) / 204)
-exe 'vert 2resize ' . ((&columns * 168 + 102) / 204)
+2wincmd w
+exe 'vert 1resize ' . ((&columns * 30 + 102) / 204)
+exe 'vert 2resize ' . ((&columns * 173 + 102) / 204)
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
 "   silent exe 'bwipe ' . s:wipebuf
@@ -88,7 +89,7 @@ let &so = s:so_save | let &siso = s:siso_save
 tabnext 1
 let s:bufnr_save = bufnr("%")
 let s:cwd_save = getcwd()
-NERDTree ~/.config
+NERDTree ~/.yadr/nvim
 if !getbufvar(s:bufnr_save, '&modified')
   let s:wipebuflines = getbufline(s:bufnr_save, 1, '$')
   if len(s:wipebuflines) <= 1 && empty(get(s:wipebuflines, 0, ''))
@@ -96,8 +97,8 @@ if !getbufvar(s:bufnr_save, '&modified')
   endif
 endif
 execute "cd" fnameescape(s:cwd_save)
-1resize 42|vert 1resize 35|2resize 42|vert 2resize 168|
-1wincmd w
+1resize 32|vert 1resize 30|2resize 32|vert 2resize 173|
+2wincmd w
 tabnext 1
 if exists('s:wipebuf')
   if empty(bufname(s:wipebuf))

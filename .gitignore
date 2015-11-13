@@ -11,6 +11,7 @@ vim/.vundles.local
 vim/.vundles.local.bak
 vim/bundle
 vim/sessions
+nvim/sessions
 .netrwhist
 bin/subl
 tags

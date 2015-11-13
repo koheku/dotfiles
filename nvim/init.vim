@@ -18,7 +18,7 @@ Plug 'skwp/vim-colors-solarized'
 Plug 'chrisbra/Colorizer'
 "Navigation
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'easymotion/vim-easymotion.vim'
+Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-tmux-navigator'
 " Vim-session depends on vim-misc
 Plug 'xolox/vim-misc' | Plug 'xolox/vim-session'

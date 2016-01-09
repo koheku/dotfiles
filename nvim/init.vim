@@ -12,6 +12,10 @@ set clipboard=unnamed
 
 " Plugins with vim-plug
 call plug#begin('~/.yadr/nvim/plugged')
+" Syntax coloring
+Plug 'mxw/vim-jsx'
+"Editing
+Plug 'tpope/vim-commentary'
 "Appearance
 Plug 'itchyny/lightline.vim'
 Plug 'skwp/vim-colors-solarized'

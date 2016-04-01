@@ -20,10 +20,7 @@ bind -n C-l if-shell "$is_vim" "send-keys C-l" "select-pane -R"
 set -g @resurrect-strategy-vim 'session'
 
 # Mouse scrolling
-set -g mode-mouse on
-set -g mouse-resize-pane on
-set -g mouse-select-pane on
-set -g mouse-select-window on
+set -g mouse on
 
 # The following lines were copy-pasted from http://evertpot.com/osx-tmux-vim-copy-paste-clipboard/
 # Setup 'v' to begin selection as in Vim
